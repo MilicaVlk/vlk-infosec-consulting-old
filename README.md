@@ -1,7 +1,5 @@
 # VLK InfoSec Consulting
 
-Static website for VLK InfoSec Consulting.
+Static website deployed to Cloudflare Pages.
 
-## Deployment
-
-This repository is deployed to Cloudflare Pages. The site is static; the publish directory is the repository root and no build command is required.
+Cloudflare Pages configuration: no build command; publish directory: `public`.
