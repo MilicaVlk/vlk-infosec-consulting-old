@@ -15,7 +15,8 @@ if(enquiry){
  const limits={name:120,company:120,email:120,role:100,country:80,context:1200};
  function answers(){return Object.entries(window.VLKFields.normalize(Object.fromEntries(new FormData(enquiry)))).map(([k,v])=>[labels[k]||k,k==='service'?service.options[service.selectedIndex].text:String(v).trim()||'Not provided']);}
  function review(){const dl=document.querySelector('#answer-review');dl.replaceChildren();answers().filter(([k])=>!['Name','Organization','Email address','Role','Additional context','website','cf-turnstile-response'].includes(k)).forEach(([k,v])=>{const dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=k;dd.textContent=v;dl.append(dt,dd);});}
- function show(focus=false){steps.forEach((el,i)=>el.hidden=i!==current);back.hidden=current===0;next.hidden=current===2;send.hidden=current!==2;const active=activeSteps();status.textContent=`Step ${active.indexOf(current)+1} of ${active.length} · ${['Your need','Your organization','Your details'][current]}`;if(current===2)review();if(focus){status.tabIndex=-1;status.focus();}}
+ const skip=document.createElement('button');skip.type='button';skip.className='btn optional-skip';skip.textContent='Skip optional questions';next.before(skip);skip.addEventListener('click',()=>{steps[1].disabled=true;current=2;show(true);});
+ function show(focus=false){skip.hidden=current!==1;if(current===1)steps[1].disabled=false;steps.forEach((el,i)=>el.hidden=i!==current);back.hidden=current===0;next.hidden=current===2;send.hidden=current!==2;const active=activeSteps();status.textContent=`Step ${active.indexOf(current)+1} of ${active.length} · ${['Your need','Your organization','Your details'][current]}`;if(current===2)review();if(focus){status.tabIndex=-1;status.focus();}}
  function valid(){
   if(!window.VLKFields.validateStep(steps[current]))return false;
   feedback.textContent='';
@@ -37,3 +38,10 @@ if(enquiry){
 
  show();
 }
+// Disclosure navigation works with click and keyboard, including Escape.
+const menus=[...document.querySelectorAll('.nav-group')];
+menus.forEach(menu=>menu.addEventListener('toggle',()=>{if(menu.open)menus.forEach(other=>{if(other!==menu)other.open=false;});}));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')menus.forEach(menu=>{if(menu.open){menu.open=false;menu.querySelector('summary').focus();}});});
+document.addEventListener('click',e=>menus.forEach(menu=>{if(!menu.contains(e.target))menu.open=false;}));
+function revealAnchor(){if(!location.hash)return;const target=document.getElementById(decodeURIComponent(location.hash.slice(1)));if(!target)return;const roleDetails=target.querySelector(':scope > .role-recommendations');if(roleDetails)roleDetails.open=true;let parent=target.parentElement;while(parent){if(parent.tagName==='DETAILS')parent.open=true;parent=parent.parentElement;}requestAnimationFrame(()=>target.scrollIntoView({block:'start'}));}
+window.addEventListener('hashchange',revealAnchor);revealAnchor();

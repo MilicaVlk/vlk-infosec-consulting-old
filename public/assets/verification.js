@@ -4,11 +4,12 @@ window.VLKVerification=(()=>{
  let id='',email='',demoCode='',expires=0,widget=null,siteKey='',done=false;
  const form=document.querySelector('#contact-form');if(!form)return;
  const box=document.createElement('div');box.className='verification-panel';box.hidden=true;
- box.innerHTML='<div id="security-check"></div><div id="code-entry" hidden><label for="verification-code">Email verification code</label><input id="verification-code" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="6" pattern="[0-9]{6}"><button type="button" id="new-code" class="btn btn-outline">Use another email / request a new code</button></div><p id="verification-status" role="status" aria-live="polite"></p>';
+ box.innerHTML='<div id="security-check"></div><div id="code-entry" hidden><label for="verification-code">Email verification code</label><input id="verification-code" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="6" pattern="[0-9]{6}"><button type="button" id="new-code" class="btn btn-outline">Request a new code</button><button type="button" id="change-email" class="btn btn-outline">Change email address</button></div><p id="verification-status" role="status" aria-live="polite"></p>';
  form.querySelector('.enquiry-actions').before(box);
  const status=box.querySelector('#verification-status'),entry=box.querySelector('#code-entry'),code=box.querySelector('input');
  form.querySelector('#email').addEventListener('input',reset);
- box.querySelector('#new-code').addEventListener('click',()=>{reset();const field=form.querySelector('#email');field.focus();field.select();});
+ box.querySelector('#change-email').addEventListener('click',()=>{reset();box.hidden=true;const field=form.querySelector('#email');field.focus();field.select();});
+ box.querySelector('#new-code').addEventListener('click',()=>{reset();status.textContent='Select Verify email & send enquiry to request another code. The request limit still applies.';form.querySelector('#enquiry-submit').focus();});
  function reset(){id='';email='';demoCode='';entry.hidden=true;code.value='';status.textContent='';form.querySelector('#enquiry-submit').textContent='Verify email & send enquiry';if(widget!==null)window.turnstile?.reset(widget);}
  async function api(payload){const r=await fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});const d=await r.json();if(!r.ok)throw Error(d.error||'Unable to submit.');return d;}
  async function ensureWidget(){if(widget!==null)return; if(!siteKey){const r=await fetch('/api/contact');if(!r.ok)throw Error('Online submission is not configured yet. Please contact VLK InfoSec Consulting on LinkedIn.');siteKey=(await r.json()).siteKey;}
