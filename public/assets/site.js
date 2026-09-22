@@ -33,7 +33,7 @@ if(enquiry){
   return true;
  }
  next.addEventListener('click',()=>{if(valid()){current=activeSteps()[activeSteps().indexOf(current)+1];show(true);}});back.addEventListener('click',()=>{current=activeSteps()[activeSteps().indexOf(current)-1];show(true);});
- enquiry.addEventListener('submit',async e=>{e.preventDefault();if(current<2){if(valid()){current=activeSteps()[activeSteps().indexOf(current)+1];show(true);}return;}if(!valid())return;send.disabled=true;try{await window.VLKVerification.submit(window.VLKFields.normalize(Object.fromEntries(new FormData(enquiry))));}finally{if(!document.querySelector('#verification-status')?.textContent.includes('COMPLETE')&&!document.querySelector('#verification-status')?.textContent.includes('enquiry was sent'))send.disabled=false;}});
+ enquiry.addEventListener('submit',async e=>{e.preventDefault();if(current<2){if(valid()){current=activeSteps()[activeSteps().indexOf(current)+1];show(true);}return;}if(!valid())return;send.disabled=true;try{await window.VLKVerification.submit(window.VLKFields.normalize(Object.fromEntries(new FormData(enquiry))));}finally{if(enquiry.dataset.submitted!=='true')send.disabled=false;}});
 
  show();
 }

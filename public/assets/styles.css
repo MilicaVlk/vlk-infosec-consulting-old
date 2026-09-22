@@ -208,3 +208,20 @@ input::placeholder,textarea::placeholder{color:#675e75;opacity:1}
 
 /* Two-column colleague recommendations, matching the experience cards. */
 .testimonials-grid,.testimonials-grid.bio-testimonials{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;align-items:start}.testimonial{min-width:0}.testimonial blockquote{overflow-wrap:anywhere}.recommendation-date{font-size:.85rem;opacity:.85}.field small{display:block;font-size:.85rem;line-height:1.5;margin-top:8px}.field select{max-width:100%}.education-summary h3{font-size:1.05rem}.business-details{display:grid;grid-template-columns:minmax(150px,1fr) 2fr;gap:12px 22px}.business-details dt{font-weight:700}.business-details dd{margin:0;overflow-wrap:anywhere}.pending-value{color:inherit;font-style:italic;opacity:.8}@media(max-width:720px){.testimonials-grid,.testimonials-grid.bio-testimonials{grid-template-columns:1fr}.business-details{grid-template-columns:1fr;gap:8px}.business-details dd{margin-bottom:14px}}
+
+/* Equal recommendation cards; full text remains visible. */
+.testimonials-grid,.testimonials-grid.bio-testimonials{align-items:stretch;grid-auto-rows:1fr}
+.testimonials-grid>.testimonial{align-self:stretch;display:flex;flex-direction:column;height:100%}
+.testimonials-grid>.testimonial>.text-link:last-child{margin-top:auto}
+@media(max-width:720px){.testimonials-grid,.testimonials-grid.bio-testimonials{grid-auto-rows:auto}}
+
+/* Email verification and confirmation */
+#contact-form [hidden]{display:none!important}
+#contact-form .enquiry-actions{align-items:center}
+#contact-form #new-code{background:#302451;color:#fff;border:2px solid #dcc1ff;margin-top:10px;white-space:normal;height:auto}
+#contact-form #new-code:hover{background:#49326d}
+#contact-form #new-code:focus-visible{outline:3px solid #f4ce70;outline-offset:4px}
+.verification-panel{width:100%;box-sizing:border-box}
+.verification-success{background:linear-gradient(135deg,#302451,#253663);border:1px solid #dabb73;padding:clamp(24px,5vw,40px)}
+.verification-success h2{color:#ffe0a0;margin:0 0 16px}
+.verification-success p{margin:0;max-width:60ch}
