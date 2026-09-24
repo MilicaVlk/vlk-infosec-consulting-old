@@ -1,0 +1,92 @@
+[
+  {
+    "path": "index.html",
+    "title": "vCISO & Information Security Consulting | VLK InfoSec Consulting",
+    "description": "Founder-led vCISO, cyber risk, GRC and certification-readiness consulting. Based in Belgrade, Serbia, connecting technical experience with business priorities."
+  },
+  {
+    "path": "404.html",
+    "title": "Page not found | VLK InfoSec Consulting",
+    "description": "The requested page could not be found."
+  },
+  {
+    "path": "vciso/index.html",
+    "title": "Virtual CISO & Security Leadership Services | VLK InfoSec Consulting",
+    "description": "Virtual and fractional CISO advice for security governance, risk priorities, roadmaps and management decisions, with scope tailored to your organization."
+  },
+  {
+    "path": "how-we-work/index.html",
+    "title": "How we work | VLK InfoSec Consulting",
+    "description": "A clear process for scoping, evidence review, priorities and ongoing security advisory."
+  },
+  {
+    "path": "bio/index.html",
+    "title": "Milica Vlk | Experience, Education & Credentials",
+    "description": "Milica Vlk\u2019s education, career, vendor credentials and colleague recommendations, with current CISSP preparation, CEH coursework and applied AI learning."
+  },
+  {
+    "path": "frameworks/index.html",
+    "title": "Security Frameworks & Regulations | VLK InfoSec Consulting",
+    "description": "Explore how security frameworks and regulations inform governance and readiness, including ISO 27001, NIS2, DORA and Serbian information security requirements."
+  },
+  {
+    "path": "insights/index.html",
+    "title": "A customer sent a security questionnaire. Where do you start? | VLK InfoSec Consulting",
+    "description": "A practical guide to owners, evidence, defensible answers and remediation for customer security requests."
+  },
+  {
+    "path": "resources/index.html",
+    "title": "Resources | VLK InfoSec Consulting",
+    "description": "Practical guidance and illustrative security advisory outputs."
+  },
+  {
+    "path": "company/index.html",
+    "title": "Company Information | VLK InfoSec Consulting",
+    "description": "Registered business identity and contact information for VLK InfoSec Consulting, including company registration and tax identification details."
+  },
+  {
+    "path": "about/index.html",
+    "title": "About Milica Vlk | Founder, VLK InfoSec Consulting",
+    "description": "Meet Milica Vlk, founder of VLK InfoSec Consulting. Explore 17+ years across engineering, technical leadership, project delivery and cybersecurity."
+  },
+  {
+    "path": "services/index.html",
+    "title": "Cyber Risk, GRC & Customer Assurance Services | VLK InfoSec Consulting",
+    "description": "Explore cybersecurity risk assessments, customer security questionnaires, governance and certification-readiness support, and fractional vCISO advisory."
+  },
+  {
+    "path": "start/index.html",
+    "title": "Contact VLK InfoSec Consulting | Discuss Your Security Priorities",
+    "description": "Discuss vCISO support, risk assessment, customer assurance or certification readiness. Share a high-level enquiry with VLK InfoSec Consulting."
+  },
+  {
+    "path": "policies/index.html",
+    "title": "Terms, Privacy & Company Information | VLK InfoSec Consulting",
+    "description": "Find VLK InfoSec Consulting\u2019s company information, privacy notice, website terms, engagement principles and information about cookies and website technologies."
+  },
+  {
+    "path": "resources/sample-deliverable/index.html",
+    "title": "Sample risk register & roadmap | VLK InfoSec Consulting",
+    "description": "An illustrative example of a security risk register and prioritized action roadmap."
+  },
+  {
+    "path": "policies/privacy/index.html",
+    "title": "Privacy Notice | VLK InfoSec Consulting",
+    "description": "How VLK InfoSec Consulting handles business enquiries, email verification and personal data, including purposes, providers, retention criteria and individual rights."
+  },
+  {
+    "path": "policies/website-terms/index.html",
+    "title": "Website Terms | VLK InfoSec Consulting",
+    "description": "Terms for using VLK InfoSec Consulting\u2019s informational business website, including content rights, responsible use, external links and professional-service boundaries."
+  },
+  {
+    "path": "policies/cookies/index.html",
+    "title": "Cookies & Website Technologies | VLK InfoSec Consulting",
+    "description": "Learn about VLK InfoSec Consulting\u2019s website technologies, security checks, browser storage, external links and the distinction between local preview and hosted operation."
+  },
+  {
+    "path": "policies/engagement/index.html",
+    "title": "Engagement Principles | VLK InfoSec Consulting",
+    "description": "How VLK InfoSec Consulting agrees consulting scope, deliverables, client responsibilities, confidentiality, fees, changes and completion in a written engagement."
+  }
+]
