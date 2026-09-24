@@ -15,10 +15,7 @@ for p in (dest/'preview').rglob('*.html'):
    x[attr]=os.path.relpath(dest/'preview'/path,p.parent)+('?' +u.query if u.query else '')+('#'+u.fragment if u.fragment else '')
  s.body.insert(0,BeautifulSoup('<div style="padding:8px;text-align:center;background:#fff2d4;color:#2b1944;font:14px system-ui">LOCAL PREVIEW · Original photographs · Email demo: 123456 · No messages sent</div>','html.parser'))
  p.write_text(str(s))
-p=dest/'OTVORI-PREVIEW.html'
-if not p.exists():
- p.write_text('<!doctype html><meta charset="utf-8"><title>VLK InfoSec Consulting — local preview</title><h1>VLK InfoSec Consulting — local preview</h1><p><a href="preview/index.html">Open the website preview</a></p>')
-s=BeautifulSoup(p.read_text(),'html.parser');s.h1.string='VLK InfoSec Consulting — local preview';p.write_text(str(s))
+p=dest/'OTVORI-PREVIEW.html';s=BeautifulSoup(p.read_text(),'html.parser');s.h1.string='VLK InfoSec Consulting — preview sa originalnim fotografijama';s.h1.insert_after(BeautifulSoup('<p>Fotografije iz drugog četa dodate su u Home, About, How We Work i kontakt. Originalni JPG fajlovi su neizmenjeni, prikazani u celom kadru. Preporuke su bez ukupnog broja, grupisane po ulogama, sa autorom na vrhu.</p>','html.parser'));p.write_text(str(s))
 errors=[]
 for f in (dest/'preview').rglob('*.html'):
  s=BeautifulSoup(f.read_text(),'html.parser')
@@ -30,6 +27,7 @@ for f in (dest/'preview').rglob('*.html'):
    if not t.exists():errors.append((str(f),v))
    elif u.fragment and t.suffix=='.html' and not BeautifulSoup(t.read_text(),'html.parser').find(id=u.fragment):errors.append(('anchor',str(f),v))
 assert not errors,errors
+for n in ['1000017821.jpg','1000017824.jpg','1000017841.jpg']:assert (dest/'preview/assets'/n).read_bytes()==(root/'photo-source'/n).read_bytes()
 with zipfile.ZipFile(root/'VLK-Website-Local-Preview.zip','w',zipfile.ZIP_DEFLATED) as z:
  for f in dest.rglob('*'):
   if f.is_file():z.write(f,f.relative_to(root))

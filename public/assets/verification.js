@@ -10,7 +10,7 @@ window.VLKVerification=(()=>{
  form.querySelector('#email').addEventListener('input',reset);
  box.querySelector('#change-email').addEventListener('click',()=>{reset();box.hidden=true;const field=form.querySelector('#email');field.focus();field.select();});
  box.querySelector('#new-code').addEventListener('click',()=>{reset();status.textContent='Select Verify email & send enquiry to request another code. The request limit still applies.';form.querySelector('#enquiry-submit').focus();});
- function reset(){id='';email='';demoCode='';entry.hidden=true;code.value='';status.textContent='';form.querySelector('#enquiry-submit').textContent='Verify email & send enquiry';if(widget!==null)window.turnstile?.reset(widget);}
+ function reset(){id='';email='';demoCode='';entry.hidden=true;code.value='';status.textContent='';status.classList.remove('verification-error');box.classList.remove('has-error');form.querySelector('#enquiry-submit').textContent='Verify email & send enquiry';if(widget!==null)window.turnstile?.reset(widget);}
  async function api(payload){const r=await fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});const d=await r.json();if(!r.ok)throw Error(d.error||'Unable to submit.');return d;}
  async function ensureWidget(){if(widget!==null)return; if(!siteKey){const r=await fetch('/api/contact');if(!r.ok)throw Error('Online submission is not configured yet. Please contact VLK InfoSec Consulting on LinkedIn.');siteKey=(await r.json()).siteKey;}
  if(!window.turnstile)await new Promise((resolve,reject)=>{const s=document.createElement('script');s.src='https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';s.onload=resolve;s.onerror=()=>reject(Error('Security check could not load.'));document.head.append(s);});widget=window.turnstile.render('#security-check',{sitekey:siteKey,action:'enquiry'});}
@@ -34,6 +34,6 @@ window.VLKVerification=(()=>{
    const title=document.createElement('h2');title.textContent=local?'Preview complete':'Thank you for getting in touch';title.tabIndex=-1;box.prepend(title);
    if(!local)status.textContent='Your email has been verified and your enquiry has been sent to VLK InfoSec Consulting. We will review your message and respond to the email address you provided.';
    title.focus();
-  }catch(e){status.textContent=e.message;if(widget!==null&&!id)window.turnstile?.reset(widget);}
+  }catch(e){status.textContent=e.message||'Something went wrong. Please try again.';status.classList.add('verification-error');box.classList.add('has-error');if(widget!==null&&!id)window.turnstile?.reset(widget);status.focus?.();}
  }};
 })();
