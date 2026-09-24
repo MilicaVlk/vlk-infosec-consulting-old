@@ -2,7 +2,7 @@ from pathlib import Path
 from bs4 import BeautifulSoup
 import shutil,hashlib,json,base64,re
 P=Path(__file__).resolve().parents[1]/'public';root=P.parent.parent
-photos=['1000017821.jpg','1000017841.jpg', 'milica-vlk-portrait.png']
+photos=['1000017821.jpg','1000017824.jpg','1000017841.jpg']
 for name in photos:shutil.copyfile(root/'photo-source'/name,P/'assets'/name)
 def F(s):return BeautifulSoup(s,'html.parser')
 def load(p):return F((P/p).read_text())
@@ -20,13 +20,13 @@ for p in list(wrap.find_all('p',recursive=False)):copy.select_one('.story-copy')
 copy.insert(0,F(photo('1000017821.jpg','Milica Vlk beside a mirror')));wrap.h2.insert_after(copy)
 # A calmer strip makes the philosophy concrete without inventing personal/client history.
 focus=s.select_one('#current-focus')
-focus.insert_after(F('<section class="section founder-perspective"><div class="wrap reading-panel"><div class="perspective-layout"><div><p class="eyebrow">Behind the work</p><h2>A balanced perspective</h2><p>Technical depth, curiosity and clear communication connect Milica’s engineering background with the advisory work offered through VLK InfoSec Consulting.</p><div class="perspective-values"><p><strong>Direction</strong><br>Understand the decision and its business context.</p><p><strong>Structure</strong><br>Clarify responsibilities, evidence and next steps.</p><p><strong>Assurance</strong><br>Review progress and make limitations visible.</p></div><a class="text-link" href="/how-we-work/">How this shapes an engagement →</a></div><div class="original-gallery">'+photo('1000017841.jpg','Milica Vlk seated')+'</div></div></div></section>'))
+focus.insert_after(F('<section class="section founder-perspective"><div class="wrap reading-panel"><div class="perspective-layout"><div><p class="eyebrow">Behind the work</p><h2>A balanced perspective</h2><p>Technical depth, curiosity and clear communication connect Milica’s engineering background with the advisory work offered through VLK InfoSec Consulting.</p><div class="perspective-values"><p><strong>Direction</strong><br>Understand the decision and its business context.</p><p><strong>Structure</strong><br>Clarify responsibilities, evidence and next steps.</p><p><strong>Assurance</strong><br>Review progress and make limitations visible.</p></div><a class="text-link" href="/how-we-work/">How this shapes an engagement →</a></div><div class="original-gallery">'+photo('1000017824.jpg','Portrait of Milica Vlk')+photo('1000017841.jpg','Milica Vlk seated')+'</div></div></div></section>'))
 save(s,'about/index.html')
 # Homepage retains professional founder portrait, with a compact original-photo panel.
 s=load('index.html');founder=s.select_one('.audit-founder');founder.insert_after(F('<div class="home-photo-story">'+photo('1000017821.jpg','Milica Vlk beside a mirror')+'<div><p class="eyebrow">Meet the founder</p><h3>The perspective behind the work</h3><p>Explore the professional journey, recent learning and approach behind VLK InfoSec Consulting.</p><a class="text-link" href="/about/">Meet Milica →</a></div></div>'));save(s,'index.html')
 # A human point of contact on process and enquiry pages; no decorative photo repetition on policies.
 for route,heading in [('how-we-work/index.html','A direct conversation with the founder'),('start/index.html','Your point of contact')]:
- s=load(route);s.main.append(F('<section class="section"><div class="wrap reading-panel contact-person">'+photo('milica-vlk-portrait.png','Portrait of Milica Vlk')+f'<div><p class="eyebrow">{heading}</p><h2>Milica Vlk</h2><p>Founder · VLK InfoSec Consulting</p><p>Initial enquiries help establish the business need, the right scope and whether an engagement is a good fit.</p><a class="text-link" href="/about/">About Milica →</a></div></div></section>'));save(s,route)
+ s=load(route);s.main.append(F('<section class="section"><div class="wrap reading-panel contact-person">'+photo('1000017824.jpg','Portrait of Milica Vlk')+f'<div><p class="eyebrow">{heading}</p><h2>Milica Vlk</h2><p>Founder · VLK InfoSec Consulting</p><p>Initial enquiries help establish the business need, the right scope and whether an engagement is a good fit.</p><a class="text-link" href="/about/">About Milica →</a></div></div></section>'));save(s,route)
 # Split cybersecurity from project management using existing explicit career context.
 s=load('bio/index.html');rec=s.select_one('#recommendations');rec.h2.string='Recommendations from colleagues and collaborators'
 outer=rec.select_one('.chapter-expand')
