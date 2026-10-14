@@ -1,0 +1,10 @@
+{
+  "checks": 7,
+  "securityCases": 567,
+  "aiCases": 92160,
+  "aiDiscoveryCases": 12,
+  "countryOptions": 251,
+  "roleOptions": 48,
+  "coverage": "Declared baseline and AI dimensions; not the full Cartesian questionnaire space",
+  "externalEmailsSent": 0
+}

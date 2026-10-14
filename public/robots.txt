@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://vlk-infosec.com/sitemap.xml
